@@ -1,0 +1,12 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
+  xmlns:ui="nativescript-keystore-access">
+  <StackLayout>
+    <Label text="{{ infoMessage }}" class="h2 text-center" textWrap="true"/>
+    <TextField text="{{ secretText }}" />
+    <Button text="Check if biometrics is available" tap="{{ available }}" />
+    <Button text="Encrypt data with biometric" tap="{{ encryptData }}" />
+    <Button text="Decrypt data with biometric" tap="{{ decryptData }}" />
+    <Button text="Check if encrypted data exists" tap="{{ dataExists }}" />
+    <Button text="Delete encrypted data" tap="{{ deleteData }}" />
+  </StackLayout>
+</Page>

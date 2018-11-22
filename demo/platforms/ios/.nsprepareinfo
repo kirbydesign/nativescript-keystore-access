@@ -1,0 +1,20 @@
+{
+	"time": "Wed Nov 21 2018 14:35:59 GMT+0100 (Central European Standard Time)",
+	"nativePlatformStatus": "3",
+	"bundle": false,
+	"release": false,
+	"changesRequireBuild": false,
+	"projectFileHash": "450eeb35a550c527db74110c1e233e61c578b564e2ab664a743dd90a3c3c3099",
+	"changesRequireBuildTime": "Wed Nov 21 2018 14:31:46 GMT+0100 (Central European Standard Time)",
+	"appFilesHashes": {
+		"/Users/neigaard/Documents/JyskeBank/relationsbank/nativescript-keystore-access/demo/app/app.css": "4f966780968440a7ed1c1b1782e9bf2361fca49e",
+		"/Users/neigaard/Documents/JyskeBank/relationsbank/nativescript-keystore-access/demo/app/.DS_Store": "6f3e5839572b2dd1bed288ab614fa9b60f82b047",
+		"/Users/neigaard/Documents/JyskeBank/relationsbank/nativescript-keystore-access/demo/app/app.js": "8190a5b3860a3a8f0bf0670632bc37b5a3f1d1af",
+		"/Users/neigaard/Documents/JyskeBank/relationsbank/nativescript-keystore-access/demo/app/app.ts": "a11da16c297a8bb5f42a9770d608237a08ea0df1",
+		"/Users/neigaard/Documents/JyskeBank/relationsbank/nativescript-keystore-access/demo/app/main-page.ts": "b923be7e1a75a61abc0c72a7faa597b0002ea2d4",
+		"/Users/neigaard/Documents/JyskeBank/relationsbank/nativescript-keystore-access/demo/app/main-page.js": "b220e8c9b64a00dd600cacd307daf9fdcc58a8e4",
+		"/Users/neigaard/Documents/JyskeBank/relationsbank/nativescript-keystore-access/demo/app/main-page.xml": "8e19bb5a660a77e67fbcea3a7f71bff0582707ad",
+		"/Users/neigaard/Documents/JyskeBank/relationsbank/nativescript-keystore-access/demo/app/package.json": "ecdcbc27c25b678603d458c611da837d8f8a56c0",
+		"/Users/neigaard/Documents/JyskeBank/relationsbank/nativescript-keystore-access/demo/app/tests/tests.js": "b8cc694f4cdd70af6c25588325111031c24f3130"
+	}
+}
