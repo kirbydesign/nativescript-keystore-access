@@ -1,0 +1,9 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# NativeScript
+/hooks
+/platforms
+
