@@ -3,7 +3,7 @@ export interface BiometricIDAvailableResult {
     touch?: boolean;
     face?: boolean;
     reason?: string;
-    customUI: boolean;// Returns true if you need to show your own biometrics UI
+    customUI: boolean; // Returns true if you need to show your own biometrics UI
 }
 
 export enum ERROR_CODES {

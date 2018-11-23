@@ -13,8 +13,8 @@ export class KeystoreAccess extends android.hardware.fingerprint.FingerprintMana
     private encryptionIv: any;
     private cancellationSignal: android.os.CancellationSignal;
 
-    private promiseResolve;// Used for async/callback from FingerprintManager, can be overwritten so don't be a fool with it
-    private promiseReject;// Used for async/callback from FingerprintManager, can be overwritten so don't be a fool with it
+    private promiseResolve; // Used for async/callback from FingerprintManager, can be overwritten so don't be a fool with it
+    private promiseReject; // Used for async/callback from FingerprintManager, can be overwritten so don't be a fool with it
 
     constructor() {
         super();
@@ -25,7 +25,7 @@ export class KeystoreAccess extends android.hardware.fingerprint.FingerprintMana
     }
 
     available(): Promise<BiometricIDAvailableResult> {
-        this.stopListening();// Somebody may be listening in, always stop listening before anything else
+        this.stopListening(); // Somebody may be listening in, always stop listening before anything else
         return new Promise((resolve, reject) => {
             try {
                 if (!this.keyguardManager || !this.keyguardManager.isKeyguardSecure()) {
@@ -77,7 +77,7 @@ export class KeystoreAccess extends android.hardware.fingerprint.FingerprintMana
     }
 
     storeDataWithFingerprint(keystoreKeyAlias: string, data: string, biometricMessage: string): Promise<void> {
-        this.stopListening();// Somebody may be listening in, always stop listening before anything else
+        this.stopListening(); // Somebody may be listening in, always stop listening before anything else
         return new Promise((resolve, reject) => {
             this.promiseResolve = resolve;
             this.promiseReject = reject;
@@ -99,7 +99,7 @@ export class KeystoreAccess extends android.hardware.fingerprint.FingerprintMana
     }
 
     retrieveDataWithFingerprint(keystoreKeyAlias: string, biometricPromptMessage: string): Promise<string> {
-        this.stopListening();// Somebody may be listening in, always stop listening before anything else
+        this.stopListening(); // Somebody may be listening in, always stop listening before anything else
         return new Promise((resolve, reject) => {
             this.promiseResolve = resolve;
             this.promiseReject = reject;
@@ -118,14 +118,14 @@ export class KeystoreAccess extends android.hardware.fingerprint.FingerprintMana
     }
 
     fingerprintEncryptedDataExists(keystoreKeyAlias: string): boolean {
-        this.stopListening();// Somebody may be listening in, always stop listening before anything else
+        this.stopListening(); // Somebody may be listening in, always stop listening before anything else
         this.keystoreKeyAlias = keystoreKeyAlias;
         const preferences = android.preference.PreferenceManager.getDefaultSharedPreferences(utils.ad.getApplicationContext());
         return preferences.contains(KeystoreAccess.name + this.keystoreKeyAlias);
     }
 
     deleteFingerprintEncryptedData(keystoreKeyAlias: string): void {
-        this.stopListening();// Somebody may be listening in, always stop listening before anything else
+        this.stopListening(); // Somebody may be listening in, always stop listening before anything else
         this.keystoreKeyAlias = keystoreKeyAlias;
         const preferences = android.preference.PreferenceManager.getDefaultSharedPreferences(utils.ad.getApplicationContext());
         preferences.edit().remove(KeystoreAccess.name + this.keystoreKeyAlias).apply();
@@ -167,7 +167,7 @@ export class KeystoreAccess extends android.hardware.fingerprint.FingerprintMana
             const key = this.keyStore.getKey(keystoreKeyAlias, null);
             this.cipher = javax.crypto.Cipher.getInstance(`${android.security.keystore.KeyProperties.KEY_ALGORITHM_AES}/${android.security.keystore.KeyProperties.BLOCK_MODE_CBC}/${android.security.keystore.KeyProperties.ENCRYPTION_PADDING_PKCS7}`);
             this.cryptoObject = new android.hardware.fingerprint.FingerprintManager.CryptoObject(this.cipher);
-            if (mode == javax.crypto.Cipher.ENCRYPT_MODE) {
+            if (mode === javax.crypto.Cipher.ENCRYPT_MODE) {
                 this.cipher.init(javax.crypto.Cipher.ENCRYPT_MODE, key);
             } else {
                 if (key != null) {
@@ -258,12 +258,12 @@ export class KeystoreAccess extends android.hardware.fingerprint.FingerprintMana
     }
 
     public onAuthenticationHelp(helpCode: number, helpString: string) {
-        if (helpCode == 1) {
+        if (helpCode === 1) {
             this.promiseReject({
                 code: ERROR_CODES.RECOVERABLE_ERROR_FINGER_MUST_COVER_SENSOR,
                 message: helpString
             });
-        } else if (helpCode == 5) {
+        } else if (helpCode === 5) {
             this.promiseReject({
                 code: ERROR_CODES.RECOVERABLE_ERROR_FINGER_MOVED_TO_FAST,
                 message: helpString

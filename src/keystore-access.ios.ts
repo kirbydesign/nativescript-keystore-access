@@ -127,7 +127,7 @@ export class KeystoreAccess implements KeystoreAccessApi {
         attributes.setObjectForKey(true, kSecReturnData);
         const privKeyRef = new interop.Reference<any>();
         let status = SecItemCopyMatching(attributes, privKeyRef);
-        if (status == errSecSuccess) {
+        if (status === errSecSuccess) {
             return true;
         }
         return false;
@@ -181,9 +181,9 @@ export class KeystoreAccess implements KeystoreAccessApi {
             const privKeyRef = new interop.Reference<any>();
             let resultData: NSData;
             let status = SecItemCopyMatching(attributes, privKeyRef);
-            if (status == errSecSuccess) {
+            if (status === errSecSuccess) {
                 resultData = privKeyRef.value;
-                const result = NSString.alloc().initWithDataEncoding(resultData, NSUTF8StringEncoding).substringFromIndex(0);// We need to do this to marshall it to a Typescript string
+                const result = NSString.alloc().initWithDataEncoding(resultData, NSUTF8StringEncoding).substringFromIndex(0); // We need to do this to marshall it to a Typescript string
                 return result;
             }
         } catch (ex) {
@@ -193,27 +193,27 @@ export class KeystoreAccess implements KeystoreAccessApi {
     }
 
     private parseError(reject: Function, code: number, message: string) {
-        if (code == -1) {
+        if (code === -1) {
             reject({
                 code: ERROR_CODES.AUTHENTICATION_FAILED,
                 message: message
             });
-        } else if (code == -2 || code == -4 || code == -9) {
+        } else if (code === -2 || code === -4 || code === -9) {
             reject({
                 code: ERROR_CODES.CANCEL,
                 message: message
             });
-        } else if (code == -5) {
+        } else if (code === -5) {
             reject({
                 code: ERROR_CODES.TAMPERED_WITH,
                 message: message
             });
-        } else if (code == 10) {
+        } else if (code === 10) {
             reject({
                 code: ERROR_CODES.DEVELOPER_ERROR,
                 message: message
             });
-        } else if (code == 20) {
+        } else if (code === 20) {
             reject({
                 code: ERROR_CODES.NOT_AVAILABLE,
                 message: message
