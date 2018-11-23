@@ -27,7 +27,7 @@ export class KeystoreDemoComponent extends Observable {
 
     available(): void {
         this.useCustomUI = false;
-        this.set("infoMessage", "");// Remove custom UI
+        this.set("infoMessage", ""); // Remove custom UI
         this.keystoreAccess.available().then(
             (result: BiometricIDAvailableResult) => {
                 console.log("doCheckAvailable result: " + JSON.stringify(result));
@@ -42,40 +42,40 @@ export class KeystoreDemoComponent extends Observable {
 
     encryptData(): void {
         if (this.useCustomUI) {
-            this.set("infoMessage", "Scan yer finger now");// Show custom UI
+            this.set("infoMessage", "Scan yer finger now"); // Show custom UI
         }
         this.keystoreAccess.storeDataWithFingerprint("ALIAS", this.secretText, "Biometric Message").then(
             (result: void) => {
                 console.log("storeDataWithFingerprint result: OK");
-                this.set("infoMessage", "");// Remove custom UI
+                this.set("infoMessage", ""); // Remove custom UI
                 dialogs.alert("storeDataWithFingerprint result: OK");
             })
             .catch(err => {
                 console.log("storeDataWithFingerprint error: " + err.code + ", " + err.message);
-                this.set("infoMessage", "");// Remove custom UI
+                this.set("infoMessage", ""); // Remove custom UI
                 dialogs.alert("Error: " + err.code + ", " + err.message);
             });
     }
 
     decryptData(): void {
         if (this.useCustomUI) {
-            this.set("infoMessage", "Scan yer finger now");// Show custom UI
+            this.set("infoMessage", "Scan yer finger now"); // Show custom UI
         }
         this.keystoreAccess.retrieveDataWithFingerprint("ALIAS", "PROMPT").then(
             (result: string) => {
                 console.log("retrieveDataWithFingerprint result: " + result);
-                this.set("infoMessage", "");// Remove custom UI
+                this.set("infoMessage", ""); // Remove custom UI
                 dialogs.alert("retrieveDataWithFingerprint result: " + result);
             })
             .catch(err => {
                 console.log("retrieveDataWithFingerprint error: " + err.code + ", " + err.message);
-                this.set("infoMessage", "");// Remove custom UI
+                this.set("infoMessage", ""); // Remove custom UI
                 dialogs.alert("Error: " + err.code + ", " + err.message);
             });
     }
 
     dataExists(): void {
-        this.set("infoMessage", "");// Remove custom UI
+        this.set("infoMessage", ""); // Remove custom UI
         if (this.keystoreAccess.fingerprintEncryptedDataExists("ALIAS")) {
             dialogs.alert("Encrypted data exists - YES");
         } else {
@@ -84,7 +84,7 @@ export class KeystoreDemoComponent extends Observable {
     }
 
     deleteData(): void {
-        this.set("infoMessage", "");// Remove custom UI
+        this.set("infoMessage", ""); // Remove custom UI
         this.keystoreAccess.deleteFingerprintEncryptedData("ALIAS");
     }
 
