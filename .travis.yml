@@ -47,6 +47,7 @@ matrix:
       env: 
         - Android="UnitTests"
       before_script:
+        - android list targets
         - echo no | android create avd --force -n test -t android-25 -b x86
         - emulator -avd test -no-audio -no-window &
         - android-wait-for-emulator
@@ -72,6 +73,7 @@ android:
     - platform-tools
     - build-tools-28.0.3
     - android-28
+    - android-25
     - extra-android-m2repository
     - sys-img-x86-android-25
 
