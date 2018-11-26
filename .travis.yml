@@ -47,7 +47,7 @@ matrix:
       env: 
         - Android="UnitTests"
       before_script:
-        - echo no | android create avd --force -n test -t android-21 -b armeabi-v7a
+        - echo no | android create avd --force -n test -t android-27
         - emulator -avd test -no-audio -no-window &
         - android-wait-for-emulator
       before_install:
