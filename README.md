@@ -1,4 +1,4 @@
-# Nativescript Keystore Access
+# Nativescript Keystore Access [![Build Status](https://travis-ci.com/kirbydesign/nativescript-keystore-access.svg?branch=master)](https://travis-ci.com/kirbydesign/nativescript-keystore-access) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > Also works with Face ID on iPhone X
 > Requires Xcode 9+, iOS 11 SDK
